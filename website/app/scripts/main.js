@@ -76,6 +76,7 @@
 
   var folder = "images/happiness/";
 
+                  $("#rotator").css("background-image","url('images/happiness/happy_1.jpg')");
   $.ajax({
       url : folder,
       success: function (data) {
