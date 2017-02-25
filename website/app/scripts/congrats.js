@@ -99,11 +99,16 @@
                 }
                 if(num > 0){
                   delayInSeconds = 1;
+                } else {
+                  window.setTimeout(function(){},1000);
                 }
                 num = ++num;
                 if(num == len){
-                  window.close();
-                  clearInterval(image_rotate);
+
+                  window.setTimeout(function(){
+                    clearInterval(image_rotate);
+                    window.close();
+                  },2000);
                 }
             }, delayInSeconds * 1000);
           } else {
