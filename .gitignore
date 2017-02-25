@@ -1,4 +1,7 @@
 
 smile/bin/*
+!smile/bin/data
+smile/bin/data/*
+!smile/bin/data/readme.txt
 
 smile/smile.xcodeproj/*
