@@ -89,7 +89,7 @@
 
 
           var rotator = document.getElementById('rotator'), //get the element
-              delayInSeconds = 1,                           //delay in seconds
+              delayInSeconds = 2,                           //delay in seconds
               num = 0,                                      //start number
               len = images.length;                                   //limit
           if(rotator != null){
