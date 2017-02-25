@@ -89,31 +89,26 @@
           $("#rotator").css("background-image","url('images/success/congrats.jpg')");
           var rotator = document.getElementById('rotator'), //get the element
               delayInSeconds = 1,                           //delay in seconds
-              num = 0,                                      //start number
+              num = 0,                                    //start number
               len = images.length;                                   //limit
           if(rotator != null){
-          var image_rotate = setInterval(function(){                       //interval changer
-                var imageURL = images[num];
-                if(imageURL !== undefined){
-                  $("#rotator").css("background-image","url('images/success/"+imageURL+"')");
-                }
-                if(num > 0){
-                  delayInSeconds = 1;
-                } else {
-                  window.setTimeout(function(){},1000);
-                }
-                num = ++num;
-                if(num == len){
+            window.setTimeout(
+              function(){
+                var image_rotate = setInterval(function(){                       //interval changer
+                      var imageURL = images[num];
+                      if(imageURL !== undefined){
+                        $("#rotator").css("background-image","url('images/success/"+imageURL+"')");
+                      }
+                      num = ++num;
+                      if(num == len){
 
-                  window.setTimeout(function(){
-                    clearInterval(image_rotate);
-                    window.close();
-                  },2000);
-                }
-            }, delayInSeconds * 1000);
-          } else {
-            console.log("Rotator is null.");
-          }
-      }
-  });
+                        window.setTimeout(function(){
+                          clearInterval(image_rotate);
+                          window.close();
+                        },2000);
+                      }
+                }, delayInSeconds * 1000);
+              }, 1500);
+        }
+  }});
 })();
