@@ -7,9 +7,11 @@ using namespace cv;
 bool isSmiling;
 bool showingNotHappy;
 bool showingHappy;
+bool detectedUnhappy;
 vector<float> recentMeasurements;
 
 void ofApp::setup() {
+    detectedUnhappy = false;
     isSmiling = true;
     showingHappy = false;
     showingNotHappy = false;
@@ -42,22 +44,24 @@ void ofApp::update() {
                 avg += recentMeasurements[i];
             }
             avg = avg / recentMeasurements.size();
-                if(ofGetElapsedTimeMillis() > 5000 && !showingHappy) {
             if(avg > 20) {
+                if(ofGetElapsedTimeMillis() > 5000 && !showingHappy && detectedUnhappy) {
                     //system("osascript -e 'quit app \"Safari\"'");
                     //ofSleepMillis(500);
                     system("open http://localhost:8000/congrats.html");
                     ofResetElapsedTimeCounter();
                     showingHappy = true;
                     showingNotHappy = false;
+                    detectedUnhappy = false;
                 }
                 isSmiling = true;
             } else {
-                if(ofGetElapsedTimeMillis() > 5000 && !showingNotHappy) {
+                if(ofGetElapsedTimeMillis() > 5000 && !showingNotHappy && !detectedUnhappy) {
                     system("open http://localhost:8000");
                     ofResetElapsedTimeCounter();
                     showingHappy = false;
                     showingNotHappy = true;
+                    detectedUnhappy = true;
                 }
                 isSmiling = false;
             }
