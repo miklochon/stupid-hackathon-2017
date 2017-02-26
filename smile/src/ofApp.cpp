@@ -17,7 +17,7 @@ void ofApp::setup() {
     showingNotHappy = false;
     ofResetElapsedTimeCounter();
     ofSetVerticalSync(true);
-    ofSetFrameRate(120);
+    ofSetFrameRate(60);
     cam.setup(1280, 720);
     smile.setup();
 }
@@ -29,10 +29,10 @@ void ofApp::update() {
         if(smile.getFaceFound()) {
             float cur = smile.getSmileAmount();
             graph.add(cur);
-            ofLog() << cur;
+            //ofLog() << cur;
             //ofLog() << graph.getNormalized(cur);
             recentMeasurements.push_back(cur);
-            if(recentMeasurements.size() > 240) {
+            if(recentMeasurements.size() > 120) {
                 recentMeasurements.erase(recentMeasurements.begin());
             }
             float avg = 0;
@@ -44,7 +44,8 @@ void ofApp::update() {
                 avg += recentMeasurements[i];
             }
             avg = avg / recentMeasurements.size();
-            if(avg > 20) {
+            ofLog() << avg;
+            if(avg > 120) {
                 if(ofGetElapsedTimeMillis() > 5000 && !showingHappy && detectedUnhappy) {
                     //system("osascript -e 'quit app \"Safari\"'");
                     //ofSleepMillis(500);
