@@ -104,7 +104,6 @@
 
                         window.setTimeout(function(){
                           clearInterval(image_rotate);
-                          window.close();
                         },2000);
                       }
                 }, delayInSeconds * 1000);
