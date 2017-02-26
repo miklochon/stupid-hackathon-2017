@@ -18,7 +18,7 @@ void ofApp::setup() {
     ofResetElapsedTimeCounter();
     ofSetVerticalSync(true);
     ofSetFrameRate(120);
-    cam.setup(640, 480);
+    cam.setup(1280, 720);
     smile.setup();
 }
 
@@ -76,7 +76,7 @@ void ofApp::draw() {
     cam.draw(0, 0);
     smile.draw();
     
-    ofTranslate(10, 10);
+    ofTranslate(970, 610);
     ofSetColor(0);
     ofDrawRectangle(0, 0, 300, 100);
     ofSetColor(255);
