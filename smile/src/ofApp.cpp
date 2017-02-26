@@ -49,6 +49,7 @@ void ofApp::update() {
                     //system("osascript -e 'quit app \"Safari\"'");
                     //ofSleepMillis(500);
                     system("open http://localhost:8000/congrats.html");
+                    system("python /Users/carl/Documents/Dev/stupid-hackathon-2017/twilio/happy.py");
                     ofResetElapsedTimeCounter();
                     showingHappy = true;
                     showingNotHappy = false;
@@ -58,6 +59,7 @@ void ofApp::update() {
             } else {
                 if(ofGetElapsedTimeMillis() > 5000 && !showingNotHappy && !detectedUnhappy) {
                     system("open http://localhost:8000");
+                    system("python /Users/carl/Documents/Dev/stupid-hackathon-2017/twilio/not-happy.py");
                     ofResetElapsedTimeCounter();
                     showingHappy = false;
                     showingNotHappy = true;
