@@ -27,9 +27,10 @@ void ofApp::update() {
         if(smile.getFaceFound()) {
             float cur = smile.getSmileAmount();
             graph.add(cur);
-            ofLog() << graph.getNormalized(cur);
-            recentMeasurements.push_back(graph.getNormalized(cur));
-            if(recentMeasurements.size() > 120) {
+            ofLog() << cur;
+            //ofLog() << graph.getNormalized(cur);
+            recentMeasurements.push_back(cur);
+            if(recentMeasurements.size() > 240) {
                 recentMeasurements.erase(recentMeasurements.begin());
             }
             float avg = 0;
@@ -41,8 +42,8 @@ void ofApp::update() {
                 avg += recentMeasurements[i];
             }
             avg = avg / recentMeasurements.size();
-            if(avg > 0.5) {
                 if(ofGetElapsedTimeMillis() > 5000 && !showingHappy) {
+            if(avg > 20) {
                     //system("osascript -e 'quit app \"Safari\"'");
                     //ofSleepMillis(500);
                     system("open http://localhost:8000/congrats.html");
